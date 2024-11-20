@@ -1,0 +1,49 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Generate Resource Usage Report</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="reportForm" (ngSubmit)="generateReport()">
+            <mat-form-field>
+                <mat-label>Start Date</mat-label>
+                <input matInput [matDatepicker]="startPicker" formControlName="startDate">
+                <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                <mat-datepicker #startPicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>End Date</mat-label>
+                <input matInput [matDatepicker]="endPicker" formControlName="endDate">
+                <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                <mat-datepicker #endPicker></mat-datepicker>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit">Generate Report</button>
+        </form>
+    </mat-card-content>
+</mat-card>
+
+<mat-table [dataSource]="reportData" class="mat-elevation-z8">
+    <ng-container matColumnDef="resource">
+        <mat-header-cell *matHeaderCellDef> Resource </mat-header-cell>
+        <mat-cell *matCellDef="let report"> {{report.resource}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+        <mat-cell *matCellDef="let report"> {{report.date | date}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="duration">
+        <mat-header-cell *matHeaderCellDef> Duration (hours) </mat-header-cell>
+        <mat-cell *matCellDef="let report"> {{report.duration}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="user">
+        <mat-header-cell *matHeaderCellDef> User </mat-header-cell>
+        <mat-cell *matCellDef="let report"> {{report.user}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

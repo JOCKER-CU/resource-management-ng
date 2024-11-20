@@ -1,0 +1,31 @@
+<!-- <mat-card>
+    <mat-card-header>
+        <mat-card-title>Book a Resource</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+                <mat-label>Resource</mat-label>
+                <mat-select formControlName="resource">
+                    <mat-option *ngFor="let resource of resources" [value]="resource.id">
+                        {{resource.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Duration (hours)</mat-label>
+                <input matInput type="number" formControlName="duration">
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit">Book</button>
+        </form>
+    </mat-card-content>
+</mat-card> -->
